@@ -1,0 +1,90 @@
+<form id="test-form" onsubmit="return checkForm()">
+<input type="text" name="test">
+
+<input type="radio" name="fm" value="1" >F 
+<button type="submit">Submit</button>
+</form>
+
+<script>        
+
+
+function checkForm() {
+
+var year= document.forms["test-form"]["test"].value;
+var yi=parseInt(year) ;
+//window.alert(yi);
+
+var f = document.getElementsByName("fm");
+
+if(f[0].checked) {
+
+var a = 2019-yi+1;
+var s1= 6+ (yi-1919)%9;
+var i = 1;
+     if(s1 > 9)
+     s1 = s1 - 9;  
+ 
+
+   document.write('<table border="1" align="center" width="500">');
+    while(i <= a){
+  
+        document.write('<td>' + s1 +'/' + pairF(s1) + '</td>');
+        s1++;      
+   
+        if(i % 9 == 0){
+            document.write('</tr>');
+            s1--;
+                  }          
+     if(s1 > 9)
+     s1 = s1 - 9;  
+    
+          i++;
+      }
+    document.write('</table>');       
+     
+ }
+
+else{
+
+var a = 2019-yi+1;
+var s1= 9- (yi-1919)%9;
+var i = 1;
+
+ 
+
+   document.write('<table border="1" align="center" width="500">');
+    while(i <= a){
+  
+        document.write('<td>' + s1 +'/' + pair(s1) + '</td>');
+        s1--;      
+   
+        if(i % 9 == 0){
+            document.write('</tr>');
+            s1--;
+                  }          
+     if(s1 <= 0)
+     s1 = s1 +9;    
+    
+          i++;
+      }
+    document.write('</table>');      
+
+  }
+
+}
+
+     function pair(x){
+       x=x+5;
+       if(x>9)
+       x=x-9;
+     return x;
+       }
+
+     function pairF(x){
+       x=x-5;
+       if(x<=0)
+       x=x+9;
+     return x;
+       }
+
+</script>
